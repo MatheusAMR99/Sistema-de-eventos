@@ -2,6 +2,9 @@ package com.evento.sistemaEventos.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "tb_atividade")
 public class Atividade {
@@ -12,6 +15,8 @@ public class Atividade {
     @Column(columnDefinition = "TEXT")
     private String description;
     private Double preco;
+    @ManyToMany(mappedBy = "atividades")
+    private Set<Participante> participantes = new HashSet<>();
 
     public Atividade(Integer id, String name, String description, Double preco) {
         this.id = id;
@@ -50,5 +55,9 @@ public class Atividade {
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    public Set<Participante> getParticipantes() {
+        return participantes;
     }
 }
