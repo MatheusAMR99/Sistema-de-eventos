@@ -21,6 +21,9 @@ public class Bloco {
         this.fim = fim;
     }
 
+    public Bloco() {
+    }
+
     public Integer getId() {
         return id;
     }

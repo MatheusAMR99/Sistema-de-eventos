@@ -2,6 +2,9 @@ package com.evento.sistemaEventos.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "tb_categoria")
 public class Categoria {
@@ -10,10 +13,15 @@ public class Categoria {
     private Integer id;
     @Column(columnDefinition = "TEXT")
     private String descricao;
+    @OneToMany(mappedBy = "categoria")
+    private List<Atividade> atividades = new ArrayList<>();
 
     public Categoria(Integer id, String descricao) {
         this.id = id;
         this.descricao = descricao;
+    }
+
+    public Categoria() {
     }
 
     public Integer getId() {
@@ -30,5 +38,9 @@ public class Categoria {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public List<Atividade> getAtividades() {
+        return atividades;
     }
 }

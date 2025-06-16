@@ -17,12 +17,19 @@ public class Atividade {
     private Double preco;
     @ManyToMany(mappedBy = "atividades")
     private Set<Participante> participantes = new HashSet<>();
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 
-    public Atividade(Integer id, String name, String description, Double preco) {
+    public Atividade(Integer id, String name, String description, Double preco, Categoria categoria) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.preco = preco;
+        this.categoria = categoria;
+    }
+
+    public Atividade() {
     }
 
     public Integer getId() {

@@ -26,6 +26,9 @@ public class Participante {
         this.email = email;
     }
 
+    public Participante() {
+    }
+
     public Integer getId() {
         return id;
     }
